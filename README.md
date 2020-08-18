@@ -10,6 +10,7 @@ Change root password
   
 On VBox - run Guest Additions  
 - bash ./VBoxLinuxAdditions.run  
+  
 On VMWare - install and run VMWare Tools  
 - apt install -y --reinstall open-vm-tools-desktop fuse  
 - reboot -f  
