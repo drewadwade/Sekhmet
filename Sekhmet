@@ -1,0 +1,141 @@
+##Install bare bones Kali from ISO 
+
+##Change root password -> sudo su; passwd root
+
+##On VBox - run Guest Additions -> bash ./VBoxLinuxAdditions.run
+##On VMWare - install and run VMWare Tools -> 
+##   apt install -y --reinstall open-vm-tools-desktop fuse
+##	 reboot -f
+
+##Create shared folder with host in hypervisor
+##   see https://www.kali.org/docs/virtualization/install-vmware-tools-kali-guest/
+##To mount the shared folder run -> mount-shared-folders
+
+##Insert your passphrase in place of **** for SSH keygen below
+##Copy this file to root, chmod +x, and run
+
+
+##Update & upgrade
+apt update
+apt -y upgrade
+apt -y autoclean
+
+
+##Fix folder structure
+rmdir /root/Music
+rmdir /root/Pictures
+rmdir /root/Public
+rmdir /root/Templates
+rmdir /root/Videos
+rmdir /root/Documents
+mkdir /root/Scripts
+mkdir /root/Payloads
+mkdir /root/tmp
+mkdir /root/Targets
+
+
+##Install fish shell
+apt install fish
+sed 's/required/sufficient/' /etc/pam.d/chsh | tee /etc/pam.d/chsh
+chsh root /usr/bin/fish
+
+
+##Install applications using apt
+apt -y install python3-pip git ssh eog nmap wireshark gobuster binwalk steghide metasploit-framework hydra theharvester recon-ng libldns-dev golang sublist3r cewl exiftool hashcat nikto onesixtyone vim exploitdb ftp rsmangler gdb gmic pngcheck dnsrecon sqlmap amass spike tcpdump bloodhound crackmapexec
+
+
+##Install Sublime
+wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
+sudo apt-get install apt-transport-https
+echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
+apt update
+apt install sublime-text
+
+
+##Install applications and resources using git
+pip3 install pyasn1 pycryptodomex pyOpenSSL ldap3 ldapdomaindump flask jsonpickle pwntools stegcracker stegoveritas scapy twisted netifaces service_identity
+stegoveritas_install_deps
+git clone https://github.com/danielmiessler/SecLists.git
+cd /opt
+git clone https://github.com/SecureAuthCorp/impacket.git
+cd impacket
+pip3 install .
+cd ..
+git clone https://github.com/lgandx/Responder.git
+git clone https://github.com/fox-it/mitm6.git
+cd mitm6
+pip3 install .
+cd ..
+git clone https://github.com/vortexau/dnsvalidator.git
+cd dnsvalidator
+python3 setup.py install
+cd ..
+git clone https://github.com/drewadwade/TRex.git
+mv ./TRex/miniPCRT.py /usr/local/bin
+mv ./TRex/TRex.sh /usr/local/bin
+rm -r ./TRex
+mkdir setoolkit
+git clone https://github.com/trustedsec/social-engineer-toolkit.git setoolkit/
+cd setoolkit
+pip3 install -r requirements.txt  #ignore dist.py error
+python setup.py
+cd ~/Scripts
+git clone https://github.com/drewadwade/recon4fish.git
+mv ~/Scripts/recon4fish/recon4fish ./recon
+chmod +x ~/Scripts/recon/
+rm -r ~/Scripts/recon4fish/
+
+##Install applications and resources using go
+echo "set -x GOPATH /go" >> ./.config/fish/config.fish
+echo "set -x PATH $PATH /go/bin $GOPATH/bin" >> ./.config/fish/config.fish
+cd /
+go get -u github.com/tomnomnom/assetfinder
+export GO111MODULE=on
+go get -u github.com/OWASP/Amass/v3/...
+go get -u github.com/tomnomnom/httprobe
+go get -u github.com/sensepost/gowitness
+go get github.com/haccer/subjack
+go get github.com/tomnomnom/waybackurls
+
+##Install exploitation payloads
+cd ./Payloads
+git clone https://github.com/PowerShellMafia/PowerSploit.git
+git clone https://github.com/BloodHoundAD/BloodHound.git
+
+
+##Enable SSH
+systemctl start ssh
+systemctl enable ssh
+##Insert your passphrase in place of ****
+ssh-keygen -t rsa -N ****** -f /root/.ssh/id_rsa
+
+
+##Update PATH variable
+export PATH=/bin:/usr/local/bin
+
+
+##Install OWASP Zap
+echo 'deb http://download.opensuse.org/repositories/home:/cabelo/Debian_9.0/ /' | sudo tee /etc/apt/sources.list.d/home:cabelo.list
+wget -nv https://download.opensuse.org/repositories/home:cabelo/Debian_9.0/Release.key -O "/etc/apt/trusted.gpg.d/home:cabelo.asc" 
+apt install owasp-zap
+
+
+##Download and Install Burp Suite
+## https://portswigger.net/burpsuite_community_linux_v2020_8.sh
+
+
+##Download and Install XFCE Theme -> https://www.xfce-look.org/p/1326265/
+##	extract to /usr/share/themes/
+
+
+##Update & upgrade
+apt update
+apt -y upgrade
+apt -y autoclean
+
+rm Sekhmet
+
+
+
+
+
