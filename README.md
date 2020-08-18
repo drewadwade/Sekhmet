@@ -1,5 +1,5 @@
 # Sekhmet
-Kali's lightweight sister
+Kali's lightweight sister - a work in progress as I decide what I want to have on it
 
 # Installation
 Install bare bones Kali from ISO  
