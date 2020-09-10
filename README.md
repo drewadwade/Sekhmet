@@ -1,5 +1,6 @@
 # Sekhmet
-Kali's lightweight sister - a work in progress as I decide what I want to have on it
+Kali's lightweight sister - a custom lighter weight Kali setup with only the tools I use.
+This is a work in progress as I decide what I want to have on it
 
 # Installation
 Install bare bones Kali from ISO  
