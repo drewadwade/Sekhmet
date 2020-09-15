@@ -41,7 +41,7 @@ chsh root /usr/bin/fish
 
 
 ##Install applications using apt
-apt -y install python3-pip git ssh eog nmap wireshark gobuster binwalk steghide metasploit-framework hydra theharvester recon-ng libldns-dev golang sublist3r cewl exiftool hashcat nikto onesixtyone vim exploitdb ftp rsmangler gdb gmic pngcheck dnsrecon sqlmap amass spike tcpdump bloodhound crackmapexec
+apt -y install python3-pip git ssh eog nmap wireshark gobuster binwalk steghide metasploit-framework hydra theharvester recon-ng libldns-dev golang sublist3r cewl exiftool hashcat nikto onesixtyone vim exploitdb ftp rsmangler gdb gmic pngcheck dnsrecon sqlmap amass spike tcpdump bloodhound crackmapexec ffuf smbclient smbmap reminna
 
 
 ##Install Sublime
@@ -85,6 +85,7 @@ mv ~/Scripts/recon4fish/recon4fish ./recon
 chmod +x ~/Scripts/recon/
 rm -r ~/Scripts/recon4fish/
 
+
 ##Install applications and resources using go
 echo "set -x GOPATH /go" >> ./.config/fish/config.fish
 echo "set -x PATH $PATH /go/bin $GOPATH/bin" >> ./.config/fish/config.fish
@@ -97,10 +98,14 @@ go get -u github.com/sensepost/gowitness
 go get github.com/haccer/subjack
 go get github.com/tomnomnom/waybackurls
 
+
 ##Install exploitation payloads
 cd ./Payloads
 git clone https://github.com/PowerShellMafia/PowerSploit.git
 git clone https://github.com/BloodHoundAD/BloodHound.git
+git clone https://github.com/rebootuser/LinEnum.git
+git clone https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite
+mv privilege-escalation-awesome-scripts-suite/ PEASS/
 
 
 ##Enable SSH
