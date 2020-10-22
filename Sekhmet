@@ -35,14 +35,61 @@ mkdir /root/Targets
 
 
 ##Install fish shell
-apt install fish
+apt -y apt install fish
 sed 's/required/sufficient/' /etc/pam.d/chsh | tee /etc/pam.d/chsh
 chsh root /usr/bin/fish
 
 
 ##Install applications using apt
-apt -y install python3-pip git ssh eog nmap wireshark gobuster binwalk steghide metasploit-framework hydra theharvester recon-ng libldns-dev golang sublist3r cewl exiftool hashcat nikto onesixtyone vim exploitdb ftp rsmangler gdb gmic pngcheck dnsrecon sqlmap amass spike tcpdump bloodhound crackmapexec ffuf smbclient smbmap reminna
-
+apt -y install python3-pip 
+apt -y install git 
+apt -y install ssh 
+apt -y install eog 
+apt -y install nmap 
+apt -y install wireshark 
+apt -y install gobuster 
+apt -y install binwalk 
+apt -y install steghide 
+apt -y install metasploit-framework 
+apt -y install hydra 
+apt -y install theharvester 
+apt -y install recon-ng 
+apt -y install libldns-dev 
+apt -y install golang 
+apt -y install sublist3r 
+apt -y install cewl 
+apt -y install exiftool 
+apt -y install hashcat 
+apt -y install nikto 
+apt -y install onesixtyone 
+apt -y install vim 
+apt -y install exploitdb 
+apt -y install ftp 
+apt -y install rsmangler 
+apt -y install gdb 
+apt -y install gmic 
+apt -y install pngcheck 
+apt -y install dnsrecon 
+apt -y install sqlmap 
+apt -y install amass 
+apt -y install spike 
+apt -y install tcpdump 
+apt -y install bloodhound 
+apt -y install crackmapexec 
+apt -y install ffuf 
+apt -y install smbclient 
+apt -y install smbmap 
+apt -y install reminna 
+apt -y install enum4linux 
+apt -y install nbtscan 
+apt -y install oscanner 
+apt -y install smtp-user-enum 
+apt -y install snmp 
+apt -y install sslscan 
+apt -y install sipvicious 
+apt -y install tnscmd10g 
+apt -y install whatweb 
+apt -y install wkhtmltopdf
 
 ##Install Sublime
 wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
@@ -66,6 +113,11 @@ git clone https://github.com/fox-it/mitm6.git
 cd mitm6
 pip3 install .
 cd ..
+git clone https://github.com/AonCyberLabs/Windows-Exploit-Suggester.git
+pip install xlrd --upgrade
+cd windows-exploit-suggester
+./windows-exploit-suggester.py --update
+cd..
 git clone https://github.com/vortexau/dnsvalidator.git
 cd dnsvalidator
 python3 setup.py install
@@ -84,6 +136,11 @@ git clone https://github.com/drewadwade/recon4fish.git
 mv ~/Scripts/recon4fish/recon4fish ./recon
 chmod +x ~/Scripts/recon/
 rm -r ~/Scripts/recon4fish/
+python3 -m pip install git+https://github.com/Tib3rius/AutoRecon.git
+sed -i 's|usr/share/seclists|~/SecLists|g' /usr/local/lib/python3.8/dist-packages/autorecon/autorecon.py
+sed -i 's|/usr/share/seclists|~/SecLists|g' /usr/local/lib/python3.8/dist-packages/autorecon/config/service-scans-default.toml
+sed -i 's|/usr/share/seclists|~/SecLists|g' /root/.config/AutoRecon/service-scans.toml
+
 
 
 ##Install applications and resources using go
@@ -106,6 +163,7 @@ git clone https://github.com/BloodHoundAD/BloodHound.git
 git clone https://github.com/rebootuser/LinEnum.git
 git clone https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite
 mv privilege-escalation-awesome-scripts-suite/ PEASS/
+git clone https://github.com/samratashok/nishang.git
 
 
 ##Enable SSH
