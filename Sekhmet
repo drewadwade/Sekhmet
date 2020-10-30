@@ -79,6 +79,7 @@ apt -y install crackmapexec
 apt -y install ffuf 
 apt -y install smbclient 
 apt -y install smbmap 
+apt -y install snmp 
 apt -y install reminna 
 apt -y install enum4linux 
 apt -y install nbtscan 
