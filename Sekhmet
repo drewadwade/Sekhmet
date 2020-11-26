@@ -91,6 +91,8 @@ apt -y install sipvicious
 apt -y install tnscmd10g 
 apt -y install whatweb 
 apt -y install wkhtmltopdf
+apt -y install telnet
+apt -y install ltrace
 
 
 ##Install Sublime
@@ -140,14 +142,16 @@ pip3 install -r requirements.txt  #ignore dist.py error
 python setup.py
 cd ~/Payloads
 git clone https://github.com/drewadwade/recon4fish.git
-mv ~/Payloads/recon4fish/recon4fish ./recon
-chmod +x ~/Payloads/recon/
+mv ~/Payloads/recon4fish/recon4fish ~/recon
+chmod +x ~/recon/
 rm -r ~/Payloads/recon4fish/
 python3 -m pip install git+https://github.com/Tib3rius/AutoRecon.git
 sed -i 's|usr/share/seclists|~/SecLists|g' /usr/local/lib/python3.8/dist-packages/autorecon/autorecon.py
 sed -i 's|/usr/share/seclists|~/SecLists|g' /usr/local/lib/python3.8/dist-packages/autorecon/config/service-scans-default.toml
 sed -i 's|/usr/share/seclists|~/SecLists|g' /root/.config/AutoRecon/service-scans.toml
-
+cd /opt
+git clone https://github.com/longld/peda.git ~/peda
+echo "source ~/peda/peda.py" >> ~/.gdbinit
 
 ##Install applications and resources using gem
 gem install wpscan
@@ -168,7 +172,7 @@ go get github.com/tomnomnom/waybackurls
 
 
 ##Install exploitation payloads
-cd ./Payloads
+cd ~/Payloads
 git clone https://github.com/PowerShellMafia/PowerSploit.git
 git clone https://github.com/BloodHoundAD/BloodHound.git
 git clone https://github.com/rebootuser/LinEnum.git
