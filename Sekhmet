@@ -179,7 +179,7 @@ git clone https://github.com/rebootuser/LinEnum.git
 git clone https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite
 mv privilege-escalation-awesome-scripts-suite/ PEASS/
 git clone https://github.com/samratashok/nishang.git
-
+cd ..
 
 ##Enable SSH
 systemctl start ssh
