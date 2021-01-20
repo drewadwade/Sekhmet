@@ -212,12 +212,13 @@ wget -nv https://download.opensuse.org/repositories/home:cabelo/Debian_9.0/Relea
 apt install owasp-zap
 
 
-##Download and Install Burp Suite
-## https://portswigger.net/burpsuite_community_linux_v2020_8.sh
+##Set Sekhmet background 
+##https://the-demonic-paradise.fandom.com/wiki/Sekhmet?file=Sekhmet.jpg
+wget https://static.wikia.nocookie.net/the-demonic-paradise/images/3/36/Sekhmet.jpg/revision/latest/scale-to-width-down/534?cb=20161005045234 -O /usr/share/backgrounds/sekhmet.jpg
 
+xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorVirtual1/workspace0/last-image -s /usr/share/backgrounds/sekhmet.jpg
 
-##Download and Install XFCE Theme -> https://www.xfce-look.org/p/1326265/
-##	extract to /usr/share/themes/
+xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorVirtual1/workspace0/image-style -s 1
 
 
 ##Update & upgrade
@@ -227,7 +228,14 @@ apt -y autoclean
 
 rm Sekhmet
 
+##Manual To-DO List
 
+echo "Things Left To Do Manually" > ~/Desktop/TODO
+echo "add Firefox to top panel" >> ~/Desktop/TODO
+echo "clean up Firefox bookmarks" >> ~/Desktop/TODO
+echo "add wordlists.assetnote.io to Firefox bookmarks" >> ~/Desktop/TODO
+
+subl ~/Desktop/TODO
 
 
 
