@@ -93,6 +93,20 @@ apt -y install whatweb
 apt -y install wkhtmltopdf
 apt -y install telnet
 apt -y install ltrace
+apt -y install ca-certificates 
+apt -y install curl 
+apt -y install apt-transport-https 
+apt -y install lsb-release gnupg
+
+
+##Install Azure CLI
+curl -sL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/microsoft.gpg > /dev/null
+
+AZ_REPO=$(lsb_release -cs)
+
+echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $AZ_REPO main" | sudo tee /etc/apt/sources.list.d/azure-cli.list
+
+apt -y install azure-cli
 
 
 ##Install Sublime
