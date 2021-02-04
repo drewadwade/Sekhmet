@@ -97,6 +97,7 @@ apt -y install ca-certificates
 apt -y install curl 
 apt -y install apt-transport-https 
 apt -y install lsb-release gnupg
+apt -y install jq
 
 
 ##Install Azure CLI
