@@ -166,6 +166,11 @@ sed -i 's|/usr/share/seclists|~/SecLists|g' /root/.config/AutoRecon/service-scan
 cd /opt
 git clone https://github.com/longld/peda.git ~/peda
 echo "source ~/peda/peda.py" >> ~/.gdbinit
+git clone https://github.com/magnumripper/JohnTheRipper jumbo
+cd jumbo/src
+./configure
+make -s clean && make -sj4
+
 
 ##Install applications and resources using gem
 gem install wpscan
